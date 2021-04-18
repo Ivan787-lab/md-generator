@@ -49,8 +49,19 @@
                 <div class="actions__create-link-container">
                     <input id="input-text" placeholder="Введите текст ссылки..." type="text" class="create-link-container__input">
                     <input id="input-url" placeholder="Введите URL ссылки..." type="text" class="create-link-container__input">
-                    <button id="add-link" class="create-link-container__btn">Добавить ссылку</button>
-                    <button id="remove-link" class="create-link-container__btn">Удалить ссылку</button>
+                </div>
+
+                <div class="actions__create-list">
+                    <select class="create-list__select">
+                        <option selected disabled value="select-none">Выберите вариант списка</option>
+                        <option value="ul">Ненумерованный список</option>
+                        <option value="ol">Нумерованный список</option>
+                    </select>
+                    <input disabled class="create-list__input-number" placeholder="Выберите кол-во пунктов..." type="number">
+                    <button disabled class="create-list__create-btn">Создать список</button>
+                    <div class="create-list__li-container">
+
+                    </div>
                 </div>
                 <button class="actions__make-btn">Сделать!</button>
             </div>
