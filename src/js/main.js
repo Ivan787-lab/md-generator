@@ -1,87 +1,90 @@
 import '../css/style.css'
 import '../css/style.scss'
 
-let allInputs = document.querySelectorAll('.actions__input')
-
-let h1 = document.createElement('h1')
-let h2 = document.createElement('h2')
-let h3 = document.createElement('h3')
-let h4 = document.createElement('h4')
-let h5 = document.createElement('h5')
-let h6 = document.createElement('h6')
-
-function createTag(tagName, value, place) {
-    let tag = document.querySelector(`${tagName}[class = 'result__text']`)
-    tag.innerText = value;
-    return document.querySelector(`.${place}`).append(tag)
+function createLine(tag, value) {
+    if (value != '') {
+        let elem = document.createElement(tag)
+        elem.innerHTML = value
+        elem.classList.add('result__text')
+       return document.querySelector('.fields__result').append(elem)
+    }
 }
 
-function createMD(tagName , value) {
-    let hashtag;
-    if (tagName == 'h1') {
+function createLineMD(tag, value) {
+    let elem = document.createElement(tag)
+    let hashtag
+    if (tag == 'h1' && value != '') {
         hashtag = '#'
-        return document.querySelector(`${tagName}[class = 'preview__text']`).innerText = `${hashtag} ${value}`
-    } else if (tagName == 'h2') {
+        elem.innerHTML = `${hashtag} ${value}`
+        elem.classList.add('preview__text')
+        return document.querySelector('.fields__preview').append(elem)
+    } else if (tag == 'h2'  && value != '')  {
         hashtag = '##'
-        return document.querySelector(`${tagName}[class = 'preview__text']`).innerText = `${hashtag} ${value}`
-    } else if (tagName == 'h3') {
+        elem.innerHTML = `${hashtag} ${value}`
+        elem.classList.add('preview__text')
+
+        return document.querySelector('.fields__preview').append(elem)
+    } else if (tag == 'h3'  && value != '') {
         hashtag = '###'
-        return document.querySelector(`${tagName}[class = 'preview__text']`).innerText = `${hashtag} ${value}`
-    } else if (tagName == 'h4') {
+        elem.innerHTML = `${hashtag} ${value}`
+        elem.classList.add('preview__text')
+
+        return document.querySelector('.fields__preview').append(elem)
+    } else if (tag == 'h4'  && value != '') {
         hashtag = '####'
-        return document.querySelector(`${tagName}[class = 'preview__text']`).innerText = `${hashtag} ${value}`
-    } else if (tagName == 'h5') {
+        elem.innerHTML = `${hashtag} ${value}`
+        elem.classList.add('preview__text')
+
+        return document.querySelector('.fields__preview').append(elem)
+    } else if (tag == 'h5'  && value != '') {
         hashtag = '#####'
-        return document.querySelector(`${tagName}[class = 'preview__text']`).innerText = `${hashtag} ${value}`
-    } else if (tagName == 'h6') {
+        elem.innerHTML = `${hashtag} ${value}`
+        elem.classList.add('preview__text')
+
+        return document.querySelector('.fields__preview').append(elem)
+    } else if (tag == 'h6'  && value != '') {
         hashtag = '######'
-        return document.querySelector(`${tagName}[class = 'preview__text']`).innerText = `${hashtag} ${value}`
+        elem.innerHTML = `${hashtag} ${value}`
+        elem.classList.add('preview__text')
+        return document.querySelector('.fields__preview').append(elem)
+    } else if (tag == 'p'  && value != '') {
+        elem.classList.add('preview__text')
+        elem.innerHTML = value
+        return document.querySelector('.fields__preview').append(elem)
     }
 }
 
-allInputs.forEach(item => {
-    item.oninput = () => {
-        if (item.id == 'h1') {
-            createTag('h1', item.value, 'fields__result')
-            createMD('h1', item.value)
-            
-        }
-        else if (item.id == 'h2') {
-            createTag('h2', item.value, 'fields__result')
-            createMD('h2', item.value)
-        }
-        else if (item.id == 'h3') {
-            createTag('h3', item.value, 'fields__result')
-            createMD('h3', item.value)
-
-        }
-        else if (item.id == 'h4') {
-            createTag('h4', item.value, 'fields__result')
-            createMD('h4', item.value)
-
-        }
-        else if (item.id == 'h5') {
-            createTag('h5', item.value, 'fields__result')
-            createMD('h5', item.value)
-
-        }
-        else if (item.id == 'h6') {
-            createTag('h6', item.value, 'fields__result')
-            createMD('h6', item.value)
-
-        }
+function createLink(value, url) {
+    if (value != '' && url != '') {
+        let link = document.createElement('a')
+        link.innerHTML = value
+        link.setAttribute('href', url)
+        link.setAttribute('target', '_blank')
+        return document.querySelector('.fields__result').append(link)
+    
     }
+}
+
+function createLinkMD(value,url) {
+    if (value != '') {
+        let text = document.createElement('p')
+        text.innerHTML = `[${value}](${url})`
+        return document.querySelector('.fields__preview').append(text)     
+    }
+}
+
+let makeBtn = document.querySelector('.actions__make-btn')
+let textarea = document.querySelector('.actions__textarea')
+
+makeBtn.addEventListener('click', () => {
+    for (let i = 1; i < 7; i++) {
+        createLine(`h${i}`, document.querySelector(`#h${i}`).value)
+        createLineMD(`h${i}`, document.querySelector(`#h${i}`).value)
+        document.querySelector(`#h${i}`).value = ''
+    }
+    createLine('p', textarea.value)
+    createLineMD('p', textarea.value)
+    createLink(document.querySelector('#input-text').value, document.querySelector('#input-url').value)
+    createLinkMD(document.querySelector('#input-text').value, document.querySelector('#input-url').value)
 })
-
-{/* 
-<h1> пример </h1>
-<h2> пример </h2>
-<h3>пример</h3>
-<h4> пример </h4>
-<h5> пример </h5>
-<h6>пример</h6>
- */}
-
- //            createTag(h2, item.value, 'result__text', 'fields__result')
-
 
