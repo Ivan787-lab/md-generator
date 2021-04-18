@@ -4,7 +4,101 @@
 }
 
 @font-face {
-    font-family: 'Source-Sans_Pro';
+    font-family: 'Source-Sans-Pro';
     src: url('../fonts/SourceSansPro-Regular.ttf');
 }
 
+main {
+    font-family: 'Source-Sans-Pro';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .main__title {
+        text-align: center;
+    }
+    .main__fields {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        box-sizing: border-box;
+
+        .fields__actions {
+            display: flex;
+            flex-direction: column;
+            width: 33%;
+            height: 700px;
+            border: 1px solid #000;
+
+            .actions__container {
+                margin-top: 20px;
+                .actions__input {
+                    width: 317px;
+                    margin: 10px;
+                    font-size: 1.2em;
+                    text-align: center;
+                    padding: 10px;
+                    box-sizing: border-box;
+                }
+                #h1 {
+                    width: 450px;
+                    height: 70px;
+                }
+                #h2 {
+                    width: 420px;
+                    height: 60px;
+                }
+                #h3 {
+                    width: 390px;
+                    height: 50px;
+                }
+                #h4 {
+                    width: 360px;
+                    height: 40px;
+                }
+                #h5 {
+                    width: 330px;
+                    height: 30px;
+                }
+                #h6 {
+                    width: 300px;
+                    height: 20px;
+                }
+                #p {
+                    width: 300px;
+                    height: 20px;
+                }
+            }
+
+        }
+
+        .fields__result {
+            border: 1px solid #000;
+            width: 33%;
+            height: 700px;
+            max-height: 700px;
+            overflow: auto;
+
+            .result__text {
+                max-width: 595.625px;
+                word-wrap: break-word;
+                word-break: keep-all;
+            }
+        }
+        .fields__preview {
+            border: 1px solid #000;
+            width: 33%;
+            height: 700px;
+            max-height: 700px;
+            overflow: auto;
+
+            .preview__text {
+                max-width: 595.625px;
+                word-wrap: break-word;
+                word-break: keep-all;
+            }
+        }
+    }
+}
